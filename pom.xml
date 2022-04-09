@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>hhpalvelinohjelmointi</groupId>
 	<artifactId>Songdatabase</artifactId>
-	<version>0.1 work in progress</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<name>Songdatabase</name>
 	<description>Song database harjoitustyö palvelinohjelmointikurssille</description>
 	<properties>
