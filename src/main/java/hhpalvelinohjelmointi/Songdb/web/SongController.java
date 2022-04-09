@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -81,7 +82,7 @@ public class SongController {
 		}
 		
 		//Song database saveSong
-		@RequestMapping(value ="savesong", method = RequestMethod.POST)
+		@RequestMapping(value ="/savesong", method = RequestMethod.POST)
 		public String save(Song song) {
 			songrepository.save(song);
 			return "redirect:listsongs";
@@ -96,7 +97,7 @@ public class SongController {
 		}
 		
 		//Song database deleteSong from database
-		//@PreAuthorize("hasAuthority('admin')")
+		@PreAuthorize("hasAuthority('admin')")
 		@RequestMapping(value = "/songdelete/{id}", method = RequestMethod.GET)
 		public String deleteSong(@PathVariable("id") Long songId, Model model) {
 			songrepository.deleteById(songId);

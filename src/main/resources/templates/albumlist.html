@@ -18,7 +18,7 @@
 				<th>Genre</th>
 				<th>Release Year</th>
 				<th></th>
-				<th></th>
+				<th sec:authorize="hasAuthority('ADMIN')"></th>
 			</tr>
 			<tr th:each="album : ${albums}">
 				<td th:text="${album.name}"></td>
@@ -26,7 +26,7 @@
 				<td th:text="${album.genre}"></td>
 				<td th:text="${album.releaseyear}"></td>
 				<td><a th:href="@{/albumedit{id}(id=${album.albumid})}" class="btn btn-primary">Edit</a></td>
-				<td> <!---sec:authorize="hasAuthority('ADMIN')"---> <a th:href="@{/albumdelete/{id}(id=${album.albumid})}" class="btn btn-xs btn-danger">Delete</a></td>
+				<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/albumdelete/{id}(id=${album.albumid})}" class="btn btn-xs btn-danger">Delete</a></td>
 			</tr>
 		</table>
 		<a href="/addalbum" class="btn btn-dark">Add Album</a>
