@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import hhpalvelinohjelmointi.Songdb.domain.AlbumRepository;
 import hhpalvelinohjelmointi.Songdb.domain.Song;
 import hhpalvelinohjelmointi.Songdb.domain.SongRepository;
 
+@CrossOrigin
 @Controller
 public class SongController {
 	@Autowired
@@ -41,24 +43,28 @@ public class SongController {
 	
 	//Restful services
 		//Restful service. Show all songs aka FindAll songs
+		@CrossOrigin
 		@RequestMapping(value="/songs", method = RequestMethod.GET)
 		public @ResponseBody List<Song> songListRest() {
 			return (List<Song>) songrepository.findAll();
 		}
 		
 		//Restful service for song database, FindById
+		@CrossOrigin
 		@RequestMapping(value = "/songs/{id}", method = RequestMethod.GET)
 		public @ResponseBody Optional<Song> findSongRest(@PathVariable("id") Long songId) {
 			return songrepository.findById(songId);
 		}
 		
 		//Restful service for song database, FindById and also get album details
+		@CrossOrigin
 		@RequestMapping(value = "/songs/{id}/albums", method = RequestMethod.GET)
 		public @ResponseBody Album findSongsandAlbumRest(@PathVariable("id") Long songId) {
 			return songrepository.findById(songId).get().getAlbum();
 		}
 		
 		//Restful service, Save Song
+		@CrossOrigin
 		@RequestMapping(value="/songs", method = RequestMethod.POST)
 		public @ResponseBody Song saveSongRest(@RequestBody Song song) {
 			return songrepository.save(song);
