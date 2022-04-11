@@ -25,12 +25,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-		.authorizeRequests().antMatchers("/css/**").permitAll() // Enable css when logged out
-		.and()
-		.cors()
+		.authorizeRequests().antMatchers("/css/**", "/albums", "/albums/{id}","/albums/{id}/songs" , "songs", "/songs/{id}", "/songs/{id}/albums").permitAll() // Enable css when logged out
 		.and()
 	    .authorizeRequests().anyRequest().authenticated()
 	    .and()
+		.cors()
+		.and()
 	  .formLogin()
 	      .defaultSuccessUrl("/listsongs", true)
 	      .permitAll()
