@@ -44,28 +44,28 @@ public class SongController {
 	
 	//Restful services
 		//Restful service. Show all songs aka FindAll songs
-		@CrossOrigin
+		@CrossOrigin(origins = "http://localhost:8080")
 		@GetMapping("songs")
 		public @ResponseBody List<Song> songListRest() {
 			return (List<Song>) songrepository.findAll();
 		}
 		
 		//Restful service for song database, FindById
-		@CrossOrigin
+		@CrossOrigin(origins = "http://localhost:8080")
 		@GetMapping("/songs/{id}")
 		public @ResponseBody Optional<Song> findSongRest(@PathVariable("id") Long songId) {
 			return songrepository.findById(songId);
 		}
 		
 		//Restful service for song database, FindById and also get album details
-		@CrossOrigin
+		@CrossOrigin(origins = "http://localhost:8080")
 		@GetMapping("/songs/{id}/albums")
 		public @ResponseBody Album findSongsandAlbumRest(@PathVariable("id") Long songId) {
 			return songrepository.findById(songId).get().getAlbum();
 		}
 		
 		//Restful service, Save Song
-		@CrossOrigin
+		@CrossOrigin(origins = "http://localhost:8080")
 		@RequestMapping(value="/songs", method = RequestMethod.POST)
 		public @ResponseBody Song saveSongRest(@RequestBody Song song) {
 			return songrepository.save(song);
