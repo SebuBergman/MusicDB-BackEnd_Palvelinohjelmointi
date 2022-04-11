@@ -49,7 +49,7 @@ public class AlbumController {
 			
 		// RESTful service, Save albums
 		@CrossOrigin
-		@GetMapping("albums")
+		@RequestMapping(value="/albums", method = RequestMethod.POST)
 		public @ResponseBody Album saveAlbumRest(@RequestBody Album album) {	
 			return albumrepository.save(album);
 		}
