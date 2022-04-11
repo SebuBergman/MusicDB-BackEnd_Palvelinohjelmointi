@@ -8,6 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,28 +28,28 @@ public class AlbumController {
 	//Restful services
 		// RESTful service, Album findAll
 		@CrossOrigin
-		@RequestMapping(value="/albums", method = RequestMethod.GET)
+		@GetMapping("albums")
 		public @ResponseBody List<Album> getAlbumRest() {	
 			return (List<Album>) albumrepository.findAll();
 		}
 			
 		// RESTful service, Album findById
 		@CrossOrigin
-		@RequestMapping(value="/albums/{id}", method = RequestMethod.GET)
+		@GetMapping("/albums/{id}")
 		public @ResponseBody Optional<Album> findAlbumRest(@PathVariable("id") Long albumId) {	
 			return albumrepository.findById(albumId);
 		}
 		
 		// RESTful service, Album findById and also get song details
 		@CrossOrigin
-		@RequestMapping(value="/albums/{id}/songs", method = RequestMethod.GET)
+		@GetMapping("/albums/{id}/songs")
 		public @ResponseBody List<Song> findAlbumandSongsRest(@PathVariable("id") Long albumId) {	
 			return albumrepository.findById(albumId).get().getSongs();
 		}
 			
 		// RESTful service, Save albums
 		@CrossOrigin
-		@RequestMapping(value="/albums", method = RequestMethod.POST)
+		@GetMapping("albums")
 		public @ResponseBody Album saveAlbumRest(@RequestBody Album album) {	
 			return albumrepository.save(album);
 		}
