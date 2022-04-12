@@ -54,6 +54,14 @@ public class AlbumController {
 			return albumrepository.save(album);
 		}
 		
+	//Guest Endpoints
+		//Guest show database items
+		@RequestMapping(value = "/albumlist/guest", method = RequestMethod.GET)
+		public String showDatabaseGuest(Model model) {
+			model.addAttribute("albums", albumrepository.findAll());
+			return "albumlistguest";
+		}
+		
 	//All of the endpoints
 		//Albumlist findAll
 		@RequestMapping("/albumlist")

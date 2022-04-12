@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<title>Songlist</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+	<link type="text/css" rel="stylesheet" href="css/style.css" th:href="@{css/style.css}" />
+</head>
+<body>
+	<div class="container">
+		<div class="col-md-4">
+			<h1>Song db - Songs</h1>
+		</div>
+		<div class="col-md-4">
+			<h3 th:inline="text">Welcome to the Song database</h3> <p>Want to make changes. <a href="/listsongs">Log in</a></p>
+		</div>
+		<table class="table table-striped">
+			<tr>
+				<th>Title</th>
+				<th>Genre</th>
+				<th>Length</th>
+				<th>Songwriter</th>
+				<th>Album</th>
+			</tr>
+			<tr th:each="song : ${songs}">
+				<td th:text="${song.title}"></td>
+				<td th:text="${song.genre}"></td>
+				<td th:text="${song.length}"></td>
+				<td th:text="${song.songwriter}"></td>
+				<td th:text="${song.album.name}"></td>
+			</tr>
+		</table>
+	</div> 
+</body>
+</html>

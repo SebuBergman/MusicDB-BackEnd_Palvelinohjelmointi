@@ -25,18 +25,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-		.authorizeRequests().antMatchers("/css/**", "/albums", "/albums/{id}","/albums/{id}/songs" , "/songs", "/songs/{id}", "/songs/{id}/albums").permitAll() // Enable css when logged out
+		.authorizeRequests().antMatchers("/css/**", "/albums", "/albums/{id}","/albums/{id}/songs" , "/songs", "/songs/{id}", "/songs/{id}/albums", "/songlist/guest","/albumlist/guest", "/index").permitAll() // Enable css when logged out
 		.and()
 	    .authorizeRequests().anyRequest().authenticated()
 	    .and()
 		.cors()
 		.and()
 	  .formLogin()
-	      .defaultSuccessUrl("/listsongs", true)
-	      .permitAll()
-	      .and()
+	  		.loginPage("/login")
+	  		.defaultSuccessUrl("/listsongs", true)
+	  		.permitAll()
+	  		.and()
 	  .logout()
-	      .permitAll();
+	  		.permitAll();
+			
 	}
 	
 	@Autowired

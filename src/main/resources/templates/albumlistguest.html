@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Albumlist</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+	<link type="text/css" rel="stylesheet" href="css/style.css" th:href="@{css/style.css}" />
+</head>
+<body>
+	<div class="container">
+		<div class="col-md-4">
+			<h1>Song db - Albums</h1>
+		</div>
+		<div class="col-md-4">
+			<h3 th:inline="text">Welcome to the Song database</h3> <p>Want to make changes. <a href="/albumlist">Log in</a></p>
+		</div>
+		<table class="table table-striped">
+			<tr>
+				<th>Name</th>
+				<th>Artist</th>
+				<th>Genre</th>
+				<th>Release Year</th>
+			</tr>
+			<tr th:each="album : ${albums}">
+				<td th:text="${album.name}"></td>
+				<td th:text="${album.artist}"></td>
+				<td th:text="${album.genre}"></td>
+				<td th:text="${album.releaseyear}"></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

@@ -39,7 +39,7 @@ public class SongdbApplication {
 			// Create a couple of users: admin and user, sebu with corresponding passwords
 			User user1 = new User("user", "$2a$10$Xeh2yIAIZxTK0smH6Ct1UOeblzLjuMBqG0JoS8RJ1w8x0qBX5gUHy", "USER");
 			User user2 = new User("admin", "$2a$10$4NEuiOObZgkcfAqA2SgZLOboYvtWZ.cLhXwYOYiwEBr22mUDTqS2a", "ADMIN");
-			User user3 = new User("sebu", "$2a$10$2iFAlUL2tzxXRFGp6qfqB.us6EQu322F7ZQVzacQOYRdFihjW9JKC", "SEBU");
+			User user3 = new User("guest", "", "GUEST");
 			
 			userrepository.save(user1);
 			userrepository.save(user2);

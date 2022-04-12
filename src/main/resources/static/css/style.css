@@ -19,3 +19,26 @@
 #returnbutton {
 	margin: 10px;
 }
+
+#logindiv {
+	max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+#logininput {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#loginbutton {
+	width: 100%;
+}
+
+#loginguestdiv {
+	margin-top: 20px;
+}
+
+#backgroundcolorlogin {
+	background-color: #eee;
+}

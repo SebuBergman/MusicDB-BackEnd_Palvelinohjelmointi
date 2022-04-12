@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <head>
-        <title>Spring Security</title>
+        <title>Login</title>
         <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 		<link type="text/css" rel="stylesheet" href="css/style.css" th:href="@{css/style.css}" />
     </head>
-    <body>
-        <div th:if="${param.error}">
-            Invalid username and password.
+    <body id="backgroundcolorlogin">
+    	<div id="logindiv">
+    	<h1>Please sign in</h1>
+	        <div th:if="${param.error}">
+	            Invalid username and password.
+	        </div>
+	        <div th:if="${param.logout}">
+	            You have been logged out.
+	        </div>
+	        <form th:action="@{/login}" method="post">
+	            <div><input id="logininput" type="text" name="username" class="form-control" placeholder="Username"/></div>
+	            <div><input id="logininput" type="password" name="password" class="form-control" placeholder="Password"/></div>
+	            <div><input type="submit" value="Sign In" class="btn btn-lg btn-primary btn-block" id="loginbutton" /></div>
+	        </form>
+	        <div id="loginguestdiv">
+	        <div>
+	        <p>Do you just want to browse the database?</p>
+	        <a th:href="@{/songlist/guest}">Songs</a><br>
+	        <a th:href="@{/albumlist/guest}">Albums</a>
+	        </div>
+	        </div>
         </div>
-        <div th:if="${param.logout}">
-            You have been logged out.
-        </div>
-        <form th:action="@{/login}" method="post">
-            <div><label> Username: <input type="text" name="username"/> </label></div>
-            <div><label> Password: <input type="password" name="password"/> </label></div>
-            <div><input type="submit" value="Sign In"/></div>
-        </form>
     </body>
 </html>

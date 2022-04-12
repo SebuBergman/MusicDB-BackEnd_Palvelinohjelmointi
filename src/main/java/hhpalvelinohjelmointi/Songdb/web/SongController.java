@@ -70,7 +70,16 @@ public class SongController {
 		public @ResponseBody Song saveSongRest(@RequestBody Song song) {
 			return songrepository.save(song);
 		}
-	
+		
+	//Guest Endpoints
+		//Guest show database items
+		@RequestMapping(value = "/songlist/guest", method = RequestMethod.GET)
+			public String showDatabaseGuest(Model model) {
+			model.addAttribute("songs", songrepository.findAll());
+			model.addAttribute("albums", albumrepository.findAll());
+			return "songlistguest";
+		}
+		
 	//All of the endpoints
 		//Songs, Show all songs
 		@RequestMapping(value="/listsongs")
