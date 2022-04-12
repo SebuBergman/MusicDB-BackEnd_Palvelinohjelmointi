@@ -29,12 +29,22 @@ public class SongdbApplication {
 			Album sighnomore = new Album("Sigh No More", "Mumford & Sons", "Indie Folk, Folk Rock, Bluegrass", 2009);
 			albumrepository.save(sighnomore);
 			
-			Album dawnfm = new Album("Dawn FM", "The Weeknd", "Dance-pop, synth-pop", 2022);
-			albumrepository.save(dawnfm);
+			Album equals = new Album("=", "Ed Sheeran", "Pop", 2021);
+			albumrepository.save(equals);
 			
-			songrepository.save(new Song("Little Lion Man", "Indie Folk", 4.06, "Mumford & Sons", sighnomore));
-			songrepository.save(new Song("Take My Breath", "Dance-Pop", 5.39, "Multiple writers", dawnfm));
-			//songrepository.save(new Song("What a Man Gotta Do", "Pop Rock", 3.00, "Jonas Brothers"));
+			Album studiokillers = new Album("Studio Killers", "Studio Killers", "Electropop / House", 2011);
+			albumrepository.save(studiokillers);
+			
+			songrepository.save(new Song("Little Lion Man", "Indie Folk / Folk Rock", 4.06, "Mumford & Sons", sighnomore));
+			songrepository.save(new Song("Roll Away Your Stone", "Indie Folk / Bluegrass", 4.23, "Mumford & Sons", sighnomore));
+			songrepository.save(new Song("Winter Winds", "Indie Folk / Soul", 4.06, "Mumford & Sons", sighnomore));
+			songrepository.save(new Song("The Cave", "Indie Folk / Soul", 3.37, "Mumford & Sons", sighnomore));
+			
+			songrepository.save(new Song("Shivers", "Dance-Pop", 3.27, "Multiple writers", equals));
+			songrepository.save(new Song("Bad Habits", "Dance-Pop / Synth-pop", 3.51, "Multiple writers", equals));
+			
+			songrepository.save(new Song("Ode to the Bouncer", "Electropop / House", 3.26, "Studio Killers", studiokillers));
+			songrepository.save(new Song("Jenny", "Electropop / House", 3.35, "Studio Killers", studiokillers));
 			
 			// Create a couple of users: admin and user, sebu with corresponding passwords
 			User user1 = new User("user", "$2a$10$Xeh2yIAIZxTK0smH6Ct1UOeblzLjuMBqG0JoS8RJ1w8x0qBX5gUHy", "USER");
