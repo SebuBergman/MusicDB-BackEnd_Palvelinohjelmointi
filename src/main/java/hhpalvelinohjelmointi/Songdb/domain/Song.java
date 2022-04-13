@@ -17,7 +17,6 @@ public class Song {
 	private String title;
 	private String genre;
 	private double length;
-	private String songwriter;
 	
 	@ManyToOne
 	@JsonIgnoreProperties("songs")
@@ -28,30 +27,27 @@ public class Song {
 		super();
 	}
 	
-	public Song(String title, String genre, double length, String songwriter) {
+	public Song(String title, String genre, double length) {
 		super();
 		this.title = title;
 		this.genre = genre;
 		this.length = length;
-		this.songwriter = songwriter;
 	}
 	
-	public Song(String title, String genre, double length, String songwriter, Album album) {
+	public Song(String title, String genre, double length, Album album) {
 		super();
 		this.title = title;
 		this.genre = genre;
 		this.length = length;
-		this.songwriter = songwriter;
 		this.album = album;
 	}
 
-	public Song(Long id, String title, String genre, double length, String songwriter) {
+	public Song(Long id, String title, String genre, double length) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.genre = genre;
 		this.length = length;
-		this.songwriter = songwriter;
 	}
 
 	public Long getId() {
@@ -70,10 +66,6 @@ public class Song {
 		return length;
 	}
 
-	public String getSongwriter() {
-		return songwriter;
-	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -90,10 +82,6 @@ public class Song {
 		this.length = length;
 	}
 
-	public void setSongwriter(String songwriter) {
-		this.songwriter = songwriter;
-	}
-
 	public Album getAlbum() {
 		return album;
 	}
@@ -105,8 +93,8 @@ public class Song {
 	@Override
 	public String toString() {
 		if (this.album != null)
-			return "Song [id=" + id + ", title=" + title + ", genre=" + genre + ", length=" + length + ", songwriter=" + songwriter + " album" + this.getAlbum() + "]";
+			return "Song [id=" + id + ", title=" + title + ", genre=" + genre + ", length=" + length + " album" + this.getAlbum() + "]";
 		else
-			return "Song [id=" + id + ", title=" + title + ", genre=" + genre + ", length=" + length + ", songwriter=" + songwriter + "]";
+			return "Song [id=" + id + ", title=" + title + ", genre=" + genre + ", length=" + length + "]";
 	}
 }
