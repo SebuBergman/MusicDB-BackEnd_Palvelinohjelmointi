@@ -1,8 +1,11 @@
 package hhpalvelinohjelmointi.Musicdb;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -26,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		// Enable css when logged out, enable restful appis and add showing of db without log in
-		.authorizeRequests().antMatchers("/css/**", "/albums/**", "/songs/**", "/api/**" ,"/musiclistguest", "/index").permitAll()
+		.authorizeRequests().antMatchers(HttpMethod.POST, "/css/**", "/albums/**", "/songs/**", "/api/**" ,"/musiclistguest", "/index").permitAll()
 		.and()
 	    .authorizeRequests().anyRequest().authenticated()
 	    .and()
@@ -50,7 +53,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
     CorsConfigurationSource corsConfigurationSource() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
-        return source;
+        CorsConfiguration config = new CorsConfiguration();
+			config.setAllowedOrigins(Arrays.asList("*"));
+			config.setAllowedMethods(Arrays.asList("*"));
+			config.setAllowedHeaders(Arrays.asList("*"));
+			config.setAllowCredentials(true);
+		config.applyPermitDefaultValues();
+		
+		source.registerCorsConfiguration("/**", config);
+		return source;
     }
 }
