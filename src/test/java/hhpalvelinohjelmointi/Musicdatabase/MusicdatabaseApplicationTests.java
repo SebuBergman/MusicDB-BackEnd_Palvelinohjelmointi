@@ -1,4 +1,4 @@
-package hhpalvelinohjelmointi.Songdatabase;
+package hhpalvelinohjelmointi.Musicdatabase;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
@@ -11,10 +11,9 @@ import hhpalvelinohjelmointi.Musicdb.web.AlbumController;
 import hhpalvelinohjelmointi.Musicdb.web.CombinedController;
 import hhpalvelinohjelmointi.Musicdb.web.SongController;
 
-//@RunWith(SpringRunner.class) // JUnit4
-@ExtendWith(SpringExtension.class)   // JUnit5 eli Jupiter
+@ExtendWith(SpringExtension.class)   
 @SpringBootTest
-class SongdatabaseApplicationTests {
+class MusicdatabaseApplicationTests {
 
 	@Autowired
 	private CombinedController combinedController;
