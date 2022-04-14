@@ -21,6 +21,13 @@
 }
 
 #logindiv {
+    max-width: 200px;
+    padding: 15px;
+    margin: 0 auto;
+    text-align: right;
+}
+
+#loginpagediv {
 	max-width: 330px;
     padding: 15px;
     margin: 0 auto;
@@ -41,4 +48,8 @@
 
 #backgroundcolorlogin {
 	background-color: #eee;
+}
+
+#addstuffdiv {
+	height: 60px;
 }

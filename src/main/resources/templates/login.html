@@ -6,7 +6,7 @@
 		<link type="text/css" rel="stylesheet" href="css/style.css" th:href="@{css/style.css}" />
     </head>
     <body id="backgroundcolorlogin">
-    	<div id="logindiv">
+    	<div id="loginpagediv">
     	<h1>Please sign in</h1>
 	        <div th:if="${param.error}">
 	            Invalid username and password.
@@ -21,9 +21,8 @@
 	        </form>
 	        <div id="loginguestdiv">
 	        <div>
-	        <p>Do you just want to browse the database?</p>
-	        <a th:href="@{/songlist/guest}">Songs</a><br>
-	        <a th:href="@{/albumlist/guest}">Albums</a>
+	        <p>Do you want to browse the database without logging in?</p>
+	        <a th:href="@{/musiclistguest}">View as guest</a><br>
 	        </div>
 	        </div>
         </div>
