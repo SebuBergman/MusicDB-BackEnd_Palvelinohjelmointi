@@ -81,7 +81,7 @@ public class AlbumController {
 		@RequestMapping(value = "/savealbum", method = RequestMethod.POST)
 		public String save(Album album) {
 			albumrepository.save(album);
-			return "redirect:albumlist";
+			return "redirect:musiclist";
 		}
 		
 		//Album database editAlbum details
@@ -92,10 +92,10 @@ public class AlbumController {
 		}
 		
 		//Song database deletesong from database
-		@PreAuthorize("hasAuthority('admin')")
+		@PreAuthorize("hasAuthority('ADMIN')")
 		@RequestMapping(value = "/albumdelete/{id}", method = RequestMethod.GET)
 		public String deleteAlbum(@PathVariable("id") Long albumId, Model model) {
 			albumrepository.deleteById(albumId);
-			return"redirect:../albumlist";
+			return"redirect:../musiclist";
 		}
 }

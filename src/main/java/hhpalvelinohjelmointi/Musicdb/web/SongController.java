@@ -101,7 +101,7 @@ public class SongController {
 		@RequestMapping(value ="/savesong", method = RequestMethod.POST)
 		public String save(Song song) {
 			songrepository.save(song);
-			return "redirect:listsongs";
+			return "redirect:musiclist";
 		}
 		
 		//Song database editSong details
@@ -113,10 +113,10 @@ public class SongController {
 		}
 		
 		//Song database deleteSong from database
-		@PreAuthorize("hasAuthority('admin')")
+		@PreAuthorize("hasAuthority('ADMIN')")
 		@RequestMapping(value = "/songdelete/{id}", method = RequestMethod.GET)
 		public String deleteSong(@PathVariable("id") Long songId, Model model) {
 			songrepository.deleteById(songId);
-			return"redirect:../listsongs";
+			return"redirect:../musiclist";
 		}
 }

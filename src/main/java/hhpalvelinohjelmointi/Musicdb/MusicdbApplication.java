@@ -15,15 +15,15 @@ import hhpalvelinohjelmointi.Musicdb.domain.User;
 import hhpalvelinohjelmointi.Musicdb.domain.UserRepository;
 
 @SpringBootApplication
-public class SongdbApplication {
-	private static final Logger log = LoggerFactory.getLogger(SongdbApplication.class);
+public class MusicdbApplication {
+	private static final Logger log = LoggerFactory.getLogger(MusicdbApplication.class);
 	
 	public static void main(String[] args) {
-		SpringApplication.run(SongdbApplication.class, args);
+		SpringApplication.run(MusicdbApplication.class, args);
 	}
 	
 	@Bean
-	public CommandLineRunner Songdatabase(SongRepository songrepository, AlbumRepository albumrepository, UserRepository userrepository) {
+	public CommandLineRunner Musicdatabase(SongRepository songrepository, AlbumRepository albumrepository, UserRepository userrepository) {
 		return (args) -> {
 			log.info("save a couple of songs");
 			Album sighnomore = new Album("Sigh No More", "Mumford & Sons", "Indie Folk, Folk Rock, Bluegrass", 2009);
@@ -86,11 +86,9 @@ public class SongdbApplication {
 			// Create a couple of users: admin and user, sebu with corresponding passwords
 			User user1 = new User("user", "$2a$10$Xeh2yIAIZxTK0smH6Ct1UOeblzLjuMBqG0JoS8RJ1w8x0qBX5gUHy", "USER");
 			User user2 = new User("admin", "$2a$10$4NEuiOObZgkcfAqA2SgZLOboYvtWZ.cLhXwYOYiwEBr22mUDTqS2a", "ADMIN");
-			User user3 = new User("guest", "", "GUEST");
 			
 			userrepository.save(user1);
 			userrepository.save(user2);
-			userrepository.save(user3);
 			
 			log.info("fetch all songs");
 			for (Song song : songrepository.findAll()) {
