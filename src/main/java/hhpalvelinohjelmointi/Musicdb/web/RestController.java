@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,8 @@ import hhpalvelinohjelmointi.Musicdb.domain.AlbumRepository;
 import hhpalvelinohjelmointi.Musicdb.domain.Song;
 import hhpalvelinohjelmointi.Musicdb.domain.SongRepository;
 
+@CrossOrigin
+@Controller
 public class RestController {
 	@Autowired
 	private SongRepository songrepository;
@@ -27,7 +30,7 @@ public class RestController {
 	//Restful services
 		// RESTful service, Album findAll
 		@CrossOrigin
-		@GetMapping("albums")
+		@GetMapping("/albums")
 		public @ResponseBody List<Album> getAlbumRest() {	
 			return (List<Album>) albumrepository.findAll();
 		}
@@ -56,7 +59,7 @@ public class RestController {
 	//All of the album endpoints
 		//Restful service. Show all songs aka FindAll songs
 		@CrossOrigin
-		@GetMapping("songs")
+		@GetMapping("/songs")
 		public @ResponseBody List<Song> songListRest() {
 			return (List<Song>) songrepository.findAll();
 		}
