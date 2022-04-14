@@ -1,97 +1,53 @@
 package hhpalvelinohjelmointi.Musicdb.web;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import hhpalvelinohjelmointi.Musicdb.domain.Album;
 import hhpalvelinohjelmointi.Musicdb.domain.AlbumRepository;
-import hhpalvelinohjelmointi.Musicdb.domain.Song;
 
 @CrossOrigin
 @Controller
 public class AlbumController {
 	@Autowired
 	private AlbumRepository albumrepository;
-	
-	//Restful services
-		// RESTful service, Album findAll
-		@CrossOrigin
-		@GetMapping("albums")
-		public @ResponseBody List<Album> getAlbumRest() {	
-			return (List<Album>) albumrepository.findAll();
-		}
-			
-		// RESTful service, Album findById
-		@CrossOrigin
-		@GetMapping("/albums/{id}")
-		public @ResponseBody Optional<Album> findAlbumRest(@PathVariable("id") Long albumId) {	
-			return albumrepository.findById(albumId);
-		}
 		
-		// RESTful service, Album findById and also get song details
-		@CrossOrigin
-		@GetMapping("/albums/{id}/songs")
-		public @ResponseBody List<Song> findAlbumandSongsRest(@PathVariable("id") Long albumId) {	
-			return albumrepository.findById(albumId).get().getSongs();
-		}
-			
-		// RESTful service, Save albums
-		@CrossOrigin
-		@RequestMapping(value="/albums", method = RequestMethod.POST)
-		public @ResponseBody Album saveAlbumRest(@RequestBody Album album) {	
-			return albumrepository.save(album);
-		}
-		
-	//Guest Endpoints
-		//Guest show database items
-		@RequestMapping(value = "/albumlist/guest", method = RequestMethod.GET)
-		public String showDatabaseGuest(Model model) {
-			model.addAttribute("albums", albumrepository.findAll());
-			return "albumlistguest";
-		}
-		
-	//All of the endpoints
-		//Albumlist findAll
+	//All of the album endpoints
+		//Albums, Show all albums endpoint
 		@RequestMapping("/albumlist")
 		public String albumlist(Model model) {
 			model.addAttribute("albums", albumrepository.findAll());
 			return "albumlist";
 		}
 		
-		//Albumlist addAlbum
+		//Music db, addAlbum endpoint
 		@RequestMapping(value = "/addalbum")
 		public String addAlbum(Model model) {
 			model.addAttribute("album", new Album());
 			return "addalbum";
 		}
 		
-		//Albumlist saveCategory
+		//Music db, saveAlbum endpoint
 		@RequestMapping(value = "/savealbum", method = RequestMethod.POST)
 		public String save(Album album) {
 			albumrepository.save(album);
 			return "redirect:musiclist";
 		}
 		
-		//Album database editAlbum details
+		//Music db, editAlbum endpoint
 		@RequestMapping(value = "/albumedit{id}", method = RequestMethod.GET)
 		public String editAlbum(@PathVariable("id") Long albumId, Model model) {
 			model.addAttribute("album", albumrepository.findById(albumId));
 			return "editalbum";
 		}
 		
-		//Song database deletesong from database
+		//Music db, deleteAlbum endpoint (Only for admin)
 		@PreAuthorize("hasAuthority('ADMIN')")
 		@RequestMapping(value = "/albumdelete/{id}", method = RequestMethod.GET)
 		public String deleteAlbum(@PathVariable("id") Long albumId, Model model) {

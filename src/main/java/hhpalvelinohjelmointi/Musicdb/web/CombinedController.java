@@ -36,4 +36,17 @@ public class CombinedController {
 			model.addAttribute("albums", albumrepository.findAll());
 			return "musiclistguest";
 		}
+		
+	//Login and main page
+		//Login mapping for Songdb
+		@RequestMapping(value="/login")
+		public String login() {
+			return "login";
+		}
+				
+		//Login mapping for the song database
+		@RequestMapping(value = "/index", method = RequestMethod.GET)
+		public String showMainpage(Model model) {
+			return "welcome";
+		}
 }

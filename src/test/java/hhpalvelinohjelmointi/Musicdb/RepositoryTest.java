@@ -1,4 +1,4 @@
-package hhpalvelinohjelmointi.Musicdatabase;
+package hhpalvelinohjelmointi.Musicdb;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,8 +15,7 @@ import hhpalvelinohjelmointi.Musicdb.domain.AlbumRepository;
 import hhpalvelinohjelmointi.Musicdb.domain.Song;
 import hhpalvelinohjelmointi.Musicdb.domain.SongRepository;
 
-//@RunWith(SpringRunner.class)  //JUnit4
-@ExtendWith(SpringExtension.class)  // JUnit5 eli Jupiter
+@ExtendWith(SpringExtension.class)
 @DataJpaTest
 public class RepositoryTest {
 	@Autowired
@@ -31,6 +30,14 @@ public class RepositoryTest {
 		
 		assertThat(song).hasSize(1);
 		assertThat(song.get(0).getTitle()).isEqualTo("Little Lion Man");
+	}
+	
+	@Test
+	public void findByNameShouldReturnAnAlbum() {
+		List<Album> album = albumrepository.findByName("Sigh No More");
+		
+		assertThat(album).hasSize(1);
+		assertThat(album.get(0).getName()).isEqualTo("Sigh No More");
 	}
 	
 	@Test

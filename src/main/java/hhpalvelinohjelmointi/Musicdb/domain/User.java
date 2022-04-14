@@ -25,16 +25,22 @@ public class User {
 
 	public User() {}
 	
-	public User(Long id, String username, String passwordHash, String role) {
+	public User(String username, String passwordHash) {
 		super();
-		this.id = id;
+		this.username = username;
+		this.passwordHash = passwordHash;
+	}
+	
+	public User(String username, String passwordHash, String role) {
+		super();
 		this.username = username;
 		this.passwordHash = passwordHash;
 		this.role = role;
 	}
 	
-	public User(String username, String passwordHash, String role) {
+	public User(Long id, String username, String passwordHash, String role) {
 		super();
+		this.id = id;
 		this.username = username;
 		this.passwordHash = passwordHash;
 		this.role = role;

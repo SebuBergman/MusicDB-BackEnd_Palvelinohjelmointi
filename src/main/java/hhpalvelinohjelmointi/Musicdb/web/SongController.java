@@ -1,21 +1,14 @@
 package hhpalvelinohjelmointi.Musicdb.web;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import hhpalvelinohjelmointi.Musicdb.domain.Album;
 import hhpalvelinohjelmointi.Musicdb.domain.AlbumRepository;
 import hhpalvelinohjelmointi.Musicdb.domain.Song;
 import hhpalvelinohjelmointi.Musicdb.domain.SongRepository;
@@ -28,60 +21,9 @@ public class SongController {
 	
 	@Autowired
 	AlbumRepository albumrepository;
-	
-	//Login and main page
-		//Login mapping for Songdb
-		@RequestMapping(value="/login")
-		public String login() {
-			return "login";
-		}
-		
-		//Login mapping for the song database
-		@RequestMapping(value = "/index", method = RequestMethod.GET)
-		public String showMainpage(Model model) {
-			return "welcome";
-		}
-	
-	//Restful services
-		//Restful service. Show all songs aka FindAll songs
-		@CrossOrigin
-		@GetMapping("songs")
-		public @ResponseBody List<Song> songListRest() {
-			return (List<Song>) songrepository.findAll();
-		}
-		
-		//Restful service for song database, FindById
-		@CrossOrigin
-		@GetMapping("/songs/{id}")
-		public @ResponseBody Optional<Song> findSongRest(@PathVariable("id") Long songId) {
-			return songrepository.findById(songId);
-		}
-		
-		//Restful service for song database, FindById and also get album details
-		@CrossOrigin
-		@GetMapping("/songs/{id}/albums")
-		public @ResponseBody Album findSongsandAlbumRest(@PathVariable("id") Long songId) {
-			return songrepository.findById(songId).get().getAlbum();
-		}
-		
-		//Restful service, Save Song
-		@CrossOrigin
-		@RequestMapping(value="/songs", method = RequestMethod.POST)
-		public @ResponseBody Song saveSongRest(@RequestBody Song song) {
-			return songrepository.save(song);
-		}
-		
-	//Guest Endpoints
-		//Guest show database items
-		@RequestMapping(value = "/songlist/guest", method = RequestMethod.GET)
-			public String showDatabaseGuest(Model model) {
-			model.addAttribute("songs", songrepository.findAll());
-			model.addAttribute("albums", albumrepository.findAll());
-			return "songlistguest";
-		}
-		
-	//All of the endpoints
-		//Songs, Show all songs
+
+	//All of the song endpoints
+		//Songs, Show all songs endpoint
 		@RequestMapping(value="/listsongs")
 		public String songlist(Model model) {
 			model.addAttribute("songs", songrepository.findAll());
@@ -89,7 +31,7 @@ public class SongController {
 			return "songlist";
 		}
 		
-		//Song database addSong
+		//Music db, addSong endpoint
 		@RequestMapping(value= "/addsong")
 		public String addSong(Model model) {
 			model.addAttribute("song", new Song());
@@ -97,14 +39,14 @@ public class SongController {
 			return "addsong";
 		}
 		
-		//Song database saveSong
+		//Music db, saveSong endpoint
 		@RequestMapping(value ="/savesong", method = RequestMethod.POST)
 		public String save(Song song) {
 			songrepository.save(song);
 			return "redirect:musiclist";
 		}
 		
-		//Song database editSong details
+		//Music db, editSong endpoint
 		@RequestMapping(value = "/songedit{id}", method = RequestMethod.GET)
 		public String editSong(@PathVariable("id") Long songId, Model model) {
 			model.addAttribute("song", songrepository.findById(songId));
@@ -112,7 +54,7 @@ public class SongController {
 			return "editsong";
 		}
 		
-		//Song database deleteSong from database
+		//Music db, deleteSong endpoint (Only for admin)
 		@PreAuthorize("hasAuthority('ADMIN')")
 		@RequestMapping(value = "/songdelete/{id}", method = RequestMethod.GET)
 		public String deleteSong(@PathVariable("id") Long songId, Model model) {
