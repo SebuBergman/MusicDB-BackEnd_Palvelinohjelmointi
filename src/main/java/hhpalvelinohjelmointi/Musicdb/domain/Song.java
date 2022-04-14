@@ -49,6 +49,15 @@ public class Song {
 		this.genre = genre;
 		this.length = length;
 	}
+	
+	public Song(Long id, String title, String genre, double length, Album album) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.genre = genre;
+		this.length = length;
+		this.album = album;
+	}
 
 	public Long getId() {
 		return id;
