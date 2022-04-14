@@ -20,14 +20,12 @@
 				<th>Title</th>
 				<th>Genre</th>
 				<th>Length</th>
-				<th>Songwriter</th>
 				<th>Album</th>
 			</tr>
 			<tr th:each="song : ${songs}">
 				<td th:text="${song.title}"></td>
 				<td th:text="${song.genre}"></td>
 				<td th:text="${song.length}"></td>
-				<td th:text="${song.songwriter}"></td>
 				<td th:text="${song.album.name}"></td>
 			</tr>
 		</table>

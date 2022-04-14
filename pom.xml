@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>hhpalvelinohjelmointi</groupId>
-	<artifactId>Songdatabase</artifactId>
+	<artifactId>Musicdatabase</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Songdatabase</name>
 	<description>Song database harjoitustyö palvelinohjelmointikurssille</description>

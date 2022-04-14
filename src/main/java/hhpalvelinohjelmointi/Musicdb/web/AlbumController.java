@@ -1,4 +1,4 @@
-package hhpalvelinohjelmointi.Songdb.web;
+package hhpalvelinohjelmointi.Musicdb.web;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import hhpalvelinohjelmointi.Songdb.domain.Album;
-import hhpalvelinohjelmointi.Songdb.domain.AlbumRepository;
-import hhpalvelinohjelmointi.Songdb.domain.Song;
+import hhpalvelinohjelmointi.Musicdb.domain.Album;
+import hhpalvelinohjelmointi.Musicdb.domain.AlbumRepository;
+import hhpalvelinohjelmointi.Musicdb.domain.Song;
 
 @CrossOrigin
 @Controller

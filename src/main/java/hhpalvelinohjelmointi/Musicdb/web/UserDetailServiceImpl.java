@@ -1,4 +1,4 @@
-package hhpalvelinohjelmointi.Songdb.web;
+package hhpalvelinohjelmointi.Musicdb.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -7,8 +7,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import hhpalvelinohjelmointi.Songdb.domain.User;
-import hhpalvelinohjelmointi.Songdb.domain.UserRepository;
+import hhpalvelinohjelmointi.Musicdb.domain.User;
+import hhpalvelinohjelmointi.Musicdb.domain.UserRepository;
 
 // This class is used by spring security to authenticate and authorize the user
 @Service

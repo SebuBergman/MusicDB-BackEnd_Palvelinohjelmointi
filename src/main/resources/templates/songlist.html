@@ -24,7 +24,6 @@
 				<th>Title</th>
 				<th>Genre</th>
 				<th>Length</th>
-				<th>Songwriter</th>
 				<th>Album</th>
 				<th></th>
 				<th sec:authorize="hasAuthority('ADMIN')"></th>
@@ -33,7 +32,6 @@
 				<td th:text="${song.title}"></td>
 				<td th:text="${song.genre}"></td>
 				<td th:text="${song.length}"></td>
-				<td th:text="${song.songwriter}"></td>
 				<td th:text="${song.album.name}"></td>
 				<td><a th:href="@{/songedit{id}(id=${song.id})}" class="btn btn-primary">Edit</a></td>
 				<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/songdelete/{id}(id=${song.id})}" class="btn btn-xs btn-danger">Delete</a></td>

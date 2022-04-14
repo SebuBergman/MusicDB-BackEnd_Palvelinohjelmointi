@@ -25,10 +25,6 @@
 				th:field="*{length}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 
-			<label for="songwriter">Songwriter / songwriters</label> <input type="text"
-				th:field="*{songwriter}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-
 			<label for="albumlist">Choose album:</label>
 			<select id="albumlist" th:field="*{album}" class="form-control">
 				<option th:each="album: ${albums}" th:value="${album.albumid}" th:text="${album.name}"></option>

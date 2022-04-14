@@ -1,4 +1,4 @@
-package hhpalvelinohjelmointi.Songdb;
+package hhpalvelinohjelmointi.Musicdb;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,7 +13,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import hhpalvelinohjelmointi.Songdb.web.UserDetailServiceImpl;
+import hhpalvelinohjelmointi.Musicdb.web.UserDetailServiceImpl;
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)

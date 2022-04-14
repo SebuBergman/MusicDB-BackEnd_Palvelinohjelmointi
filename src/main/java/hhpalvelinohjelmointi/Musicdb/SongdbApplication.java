@@ -1,4 +1,4 @@
-package hhpalvelinohjelmointi.Songdb;
+package hhpalvelinohjelmointi.Musicdb;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,12 +7,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import hhpalvelinohjelmointi.Songdb.domain.Album;
-import hhpalvelinohjelmointi.Songdb.domain.AlbumRepository;
-import hhpalvelinohjelmointi.Songdb.domain.Song;
-import hhpalvelinohjelmointi.Songdb.domain.SongRepository;
-import hhpalvelinohjelmointi.Songdb.domain.User;
-import hhpalvelinohjelmointi.Songdb.domain.UserRepository;
+import hhpalvelinohjelmointi.Musicdb.domain.Album;
+import hhpalvelinohjelmointi.Musicdb.domain.AlbumRepository;
+import hhpalvelinohjelmointi.Musicdb.domain.Song;
+import hhpalvelinohjelmointi.Musicdb.domain.SongRepository;
+import hhpalvelinohjelmointi.Musicdb.domain.User;
+import hhpalvelinohjelmointi.Musicdb.domain.UserRepository;
 
 @SpringBootApplication
 public class SongdbApplication {
