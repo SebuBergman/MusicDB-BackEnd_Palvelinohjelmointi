@@ -16,12 +16,12 @@ import hhpalvelinohjelmointi.Musicdb.domain.UserRepository;
 
 @SpringBootApplication
 public class MusicdbApplication {
-	private static final Logger log = LoggerFactory.getLogger(MusicdbApplication.class);
+	//private static final Logger log = LoggerFactory.getLogger(MusicdbApplication.class);
 	
 	public static void main(String[] args) {
 		SpringApplication.run(MusicdbApplication.class, args);
 	}
-	
+	/*
 	@Bean
 	public CommandLineRunner Musicdatabase(SongRepository songrepository, AlbumRepository albumrepository, UserRepository userrepository) {
 		return (args) -> {
@@ -95,5 +95,5 @@ public class MusicdbApplication {
 				log.info(song.toString());
 			}
 		};
-	}
+	}*/
 }
