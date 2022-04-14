@@ -29,7 +29,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		// Enable css when logged out, enable restful appis and add showing of db without log in
-		.authorizeRequests().antMatchers(HttpMethod.POST, "/css/**", "/albums/**", "/songs/**", "/api/**" ,"/musiclistguest", "/index").permitAll()
+		.authorizeRequests().antMatchers("/css/**", "/albums/**", "/songs/**", "/api/**" ,"/musiclistguest", "/index").permitAll()
+		.and()
+		.csrf().disable().cors().and().authorizeRequests()
+		.antMatchers(HttpMethod.POST, "/login").permitAll()
 		.and()
 	    .authorizeRequests().anyRequest().authenticated()
 	    .and()
