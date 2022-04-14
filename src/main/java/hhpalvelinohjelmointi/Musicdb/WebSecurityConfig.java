@@ -28,8 +28,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-		.csrf().disable().cors().and().authorizeRequests()
-		.antMatchers(HttpMethod.POST, "/login", "/albums/**", "/songs/**", "/api/**" ,"/musiclistguest", "/index", "/css/**").permitAll()
+		// Enable css when logged out, enable restful appis and add showing of db without log in
+		.authorizeRequests().antMatchers("/css/**", "/albums/**", "/songs/**", "/api/**" ,"/musiclistguest", "/index").permitAll()
 		.and()
 	    .authorizeRequests().anyRequest().authenticated()
 	    .and()
@@ -57,7 +57,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			config.setAllowedOrigins(Arrays.asList("*"));
 			config.setAllowedMethods(Arrays.asList("*"));
 			config.setAllowedHeaders(Arrays.asList("*"));
-			config.setAllowCredentials(true);
 		config.applyPermitDefaultValues();
 		
 		source.registerCorsConfiguration("/**", config);
