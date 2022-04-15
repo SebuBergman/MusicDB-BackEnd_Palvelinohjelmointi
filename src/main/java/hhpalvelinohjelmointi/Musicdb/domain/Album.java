@@ -122,6 +122,6 @@ public class Album {
 	@Override
 	public String toString() {
 		return "Album [albumid=" + albumid + ", name=" + name + ", artist=" + artist + ", genre=" + genre
-				+ ", releaseyear=" + releaseyear + ", albumart=" + albumart + ", songs=" + songs + "]";
+				+ ", releaseyear=" + releaseyear + ", albumart=" + albumart + "]";
 	}
 }
