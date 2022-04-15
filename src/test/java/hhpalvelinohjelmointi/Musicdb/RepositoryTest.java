@@ -44,14 +44,14 @@ public class RepositoryTest {
 	
 	@Test
 	public void CreateNewAlbum() {
-		Album yellowsubmarine = new Album("Yellow Submarine", "The Beatles", "Psychedelia / Film Score", 1968);
+		Album yellowsubmarine = new Album("Yellow Submarine", "The Beatles", "Psychedelia / Film Score", 1968, "https://upload.wikimedia.org/wikipedia/en/a/ac/TheBeatles-YellowSubmarinealbumcover.jpg");
 		albumrepository.save(yellowsubmarine);
 		assertThat(yellowsubmarine.getAlbumid()).isNotNull();
 	}
 	
 	@Test
 	public void CreateNewSong() {
-		Album yellowsubmarine = new Album("Yellow Submarine", "The Beatles", "Psychedelia / Film Score", 1968);
+		Album yellowsubmarine = new Album("Yellow Submarine", "The Beatles", "Psychedelia / Film Score", 1968, "https://upload.wikimedia.org/wikipedia/en/a/ac/TheBeatles-YellowSubmarinealbumcover.jpg");
 		albumrepository.save(yellowsubmarine);
 		
 		Song song = new Song("Yellow Submarine", "Pop / Psychedelia", 1966, yellowsubmarine);

@@ -25,6 +25,14 @@ public class Album {
 
 	public Album() {}
 	
+	public Album(String name, String artist, String genre, int releaseyear) {
+		super();
+		this.name = name;
+		this.artist = artist;
+		this.genre = genre;
+		this.releaseyear = releaseyear;
+	}
+	
 	public Album(String name, String artist, String genre, int releaseyear, String albumart) {
 		super();
 		this.name = name;
@@ -44,13 +52,14 @@ public class Album {
 		this.albumart = albumart;
 	}
 
-	public Album(Long albumid, String name, String artist, String genre, int releaseyear, List<Song> songs) {
+	public Album(Long albumid, String name, String artist, String genre, int releaseyear, String albumart, List<Song> songs) {
 		super();
 		this.albumid = albumid;
 		this.name = name;
 		this.artist = artist;
 		this.genre = genre;
 		this.releaseyear = releaseyear;
+		this.albumart = albumart;
 		this.songs = songs;
 	}
 
