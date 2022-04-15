@@ -80,7 +80,7 @@ public class RestController {
 				
 		//Restful service, Save Song
 		@CrossOrigin
-		@RequestMapping(value="/savesongs", method = RequestMethod.POST)
+		@RequestMapping(value="/songs", method = RequestMethod.POST)
 		public @ResponseBody Song saveSongRest(@RequestBody Song song) {
 			return songrepository.save(song);
 		}
