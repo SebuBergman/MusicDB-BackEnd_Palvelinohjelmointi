@@ -18,27 +18,30 @@ public class Album {
 	private String artist;
 	private String genre;
 	private int releaseyear;
+	private String albumart;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "album")
 	private List<Song> songs;
 
 	public Album() {}
 	
-	public Album(String name, String artist, String genre, int releaseyear) {
+	public Album(String name, String artist, String genre, int releaseyear, String albumart) {
 		super();
 		this.name = name;
 		this.artist = artist;
 		this.genre = genre;
 		this.releaseyear = releaseyear;
+		this.albumart = albumart;
 	}
 
-	public Album(Long albumid, String name, String artist, String genre, int releaseyear) {
+	public Album(Long albumid, String name, String artist, String genre, int releaseyear, String albumart) {
 		super();
 		this.albumid = albumid;
 		this.name = name;
 		this.artist = artist;
 		this.genre = genre;
 		this.releaseyear = releaseyear;
+		this.albumart = albumart;
 	}
 
 	public Album(Long albumid, String name, String artist, String genre, int releaseyear, List<Song> songs) {
@@ -91,6 +94,14 @@ public class Album {
 		this.releaseyear = releaseyear;
 	}
 
+	public String getAlbumart() {
+		return albumart;
+	}
+
+	public void setAlbumart(String albumart) {
+		this.albumart = albumart;
+	}
+
 	public List<Song> getSongs() {
 		return songs;
 	}
@@ -102,6 +113,6 @@ public class Album {
 	@Override
 	public String toString() {
 		return "Album [albumid=" + albumid + ", name=" + name + ", artist=" + artist + ", genre=" + genre
-				+ ", releaseyear=" + releaseyear + "]";
+				+ ", releaseyear=" + releaseyear + ", albumart=" + albumart + ", songs=" + songs + "]";
 	}
 }
