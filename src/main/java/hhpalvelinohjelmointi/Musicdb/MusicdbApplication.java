@@ -26,6 +26,7 @@ public class MusicdbApplication {
 	public CommandLineRunner Musicdatabase(SongRepository songrepository, AlbumRepository albumrepository, UserRepository userrepository) {
 		return (args) -> {
 			log.info("save a couple of songs");
+			//Adding all albums first. Here's some aka 10 :DD
 			Album sighnomore = new Album("Sigh No More", "Mumford & Sons", "Indie Folk, Folk Rock, Bluegrass", 2009, "https://upload.wikimedia.org/wikipedia/en/f/f3/Mumfordsonssighnomore.jpg");
 			albumrepository.save(sighnomore);
 			

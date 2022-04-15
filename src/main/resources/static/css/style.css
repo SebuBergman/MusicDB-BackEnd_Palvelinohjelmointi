@@ -1,12 +1,16 @@
 @charset "UTF-8";
+
+/* CSS for albumlistpage */
 #albumlist {
 	width: 250px;
 }
 
-.divcentering {
-	margin: auto;
+/* CSS for the returnbutton */
+#returnbutton {
+	margin: 10px;
 }
 
+/* CSS for Add & Edit thymeleaf pages */
 #h1div {
 	padding: 5px;
 	padding-top: 20px;
@@ -16,10 +20,7 @@
 	padding: 10px;
 }
 
-#returnbutton {
-	margin: 10px;
-}
-
+/* CSS for login page and login buttons */
 #logindiv {
     max-width: 200px;
     padding: 15px;
@@ -31,6 +32,10 @@
 	max-width: 330px;
     padding: 15px;
     margin: 0 auto;
+}
+
+#backgroundcolorlogin {
+	background-color: #eee;
 }
 
 #logininput {
@@ -46,10 +51,11 @@
 	margin-top: 20px;
 }
 
-#backgroundcolorlogin {
-	background-color: #eee;
-}
-
+/* Not sure what for */
 #addstuffdiv {
 	height: 60px;
+}
+
+.divcentering {
+	margin: auto;
 }

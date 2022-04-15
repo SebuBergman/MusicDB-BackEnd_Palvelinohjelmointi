@@ -28,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-		// Enable css when logged out, enable restful appis and add showing of db without log in
+		// Enable css when logged out, enable restful appis and add showing of db without log in aka Guest. Also index page
 		.authorizeRequests().antMatchers("/css/**", "/albums/**", "/songs/**", "/api/**" ,"/musiclistguest", "/index").permitAll()
 		.and()
 	    .authorizeRequests().anyRequest().authenticated()
@@ -36,6 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.cors()
 		.and()
 	  .formLogin()
+	  		//Login page and default place for login
 	  		.loginPage("/login")
 	  		.defaultSuccessUrl("/musiclist", true)
 	  		.permitAll()
@@ -50,6 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
 	}
 	
+	//Some cors configuration for front-end json fetching
 	@Bean
     CorsConfigurationSource corsConfigurationSource() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

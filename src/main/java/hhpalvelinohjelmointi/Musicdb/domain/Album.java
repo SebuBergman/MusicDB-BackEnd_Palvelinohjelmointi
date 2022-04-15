@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 public class Album {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	//All of my Album details
 	private Long albumid;
 	private String name;
 	private String artist;
@@ -35,16 +36,6 @@ public class Album {
 	
 	public Album(String name, String artist, String genre, int releaseyear, String albumart) {
 		super();
-		this.name = name;
-		this.artist = artist;
-		this.genre = genre;
-		this.releaseyear = releaseyear;
-		this.albumart = albumart;
-	}
-
-	public Album(Long albumid, String name, String artist, String genre, int releaseyear, String albumart) {
-		super();
-		this.albumid = albumid;
 		this.name = name;
 		this.artist = artist;
 		this.genre = genre;

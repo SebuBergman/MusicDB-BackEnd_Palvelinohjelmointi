@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-    <head>
-        <title>Login</title>
-        <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+	<head>
+		<title>Login</title>
+		<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 		<link type="text/css" rel="stylesheet" href="/css/style.css" th:href="@{/css/style.css}" />
-    </head>
-    <body id="backgroundcolorlogin">
-    	<div id="loginpagediv">
-    	<h1>Please sign in</h1>
-	        <div th:if="${param.error}">
-	            Invalid username and password.
-	        </div>
-	        <div th:if="${param.logout}">
-	            You have been logged out.
-	        </div>
-	        <form th:action="@{/login}" method="post">
-	            <div><input id="logininput" type="text" name="username" class="form-control" placeholder="Username"/></div>
-	            <div><input id="logininput" type="password" name="password" class="form-control" placeholder="Password"/></div>
-	            <div><input type="submit" value="Sign In" class="btn btn-lg btn-primary btn-block" id="loginbutton" /></div>
-	        </form>
-	        <div id="loginguestdiv">
-		        <p>Do you want to browse the database without logging in?</p>
-		        <a th:href="@{/musiclistguest}">View as guest</a><br>
-	        </div>
-        </div>
-    </body>
+	</head>
+	<body id="backgroundcolorlogin">
+		<div id="loginpagediv">
+			<h1>Please sign in</h1>
+		<div th:if="${param.error}">Invalid username and password.</div>
+		<div th:if="${param.logout}">You have been logged out.</div>
+			<form th:action="@{/login}" method="post">
+				<div>
+					<input id="logininput" type="text" name="username" class="form-control" placeholder="Username"/>
+				</div>
+				<div>
+					<input id="logininput" type="password" name="password" class="form-control" placeholder="Password"/>
+				</div>
+				<div>
+					<input type="submit" value="Sign In" class="btn btn-lg btn-primary btn-block" id="loginbutton" />
+				</div>
+			</form>
+		<div id="loginguestdiv">
+			<p>Do you want to browse the database without logging in?</p>
+			<a th:href="@{/musiclistguest}">View as guest</a><br>
+		</div>
+		</div>
+	</body>
 </html>

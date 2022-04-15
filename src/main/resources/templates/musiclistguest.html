@@ -1,54 +1,53 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-<head>
-	<title>Music list</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
-	<link type="text/css" rel="stylesheet" href="css/style.css" th:href="@{css/style.css}" />
-</head>
-<body>
-	<div class="container">
-		<div class="col-md-4">
-			<h1>Music db</h1>
+	<head>
+		<title>Music list - Guest</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+		<link type="text/css" rel="stylesheet" href="css/style.css" th:href="@{css/style.css}" />
+	</head>
+	<body>
+		<div class="container">
+			<div class="col-md-4">
+				<h1>Music db</h1>
+			</div>
+			<div class="col-md-4">
+				<h3 th:inline="text">Welcome to the Music database</h3> <p>Want to make changes. <a href="/musiclist">Log in</a></p>
+			</div>
+			<div>
+				<h3>Albums:</h3>
+				<table class="table table-striped">
+					<tr>
+						<th>Name</th>
+						<th>Artist</th>
+						<th>Genre</th>
+						<th>Release Year</th>
+					</tr>
+					<tr th:each="album : ${albums}">
+						<td th:text="${album.name}"></td>
+						<td th:text="${album.artist}"></td>
+						<td th:text="${album.genre}"></td>
+						<td th:text="${album.releaseyear}"></td>
+					</tr>
+				</table>
+			</div>
+			<div>
+				<h3>Songs:</h3>
+				<table class="table table-striped">
+					<tr>
+						<th>Title</th>
+						<th>Song genre</th>
+						<th>Length</th>
+						<th>Album</th>
+					</tr>
+					<tr th:each="song : ${songs}">
+						<td th:text="${song.title}"></td>
+						<td th:text="${song.genre}"></td>
+						<td th:text="${song.length}"></td>
+						<td th:text="${song.album.name}"></td>
+					</tr>
+				</table>
+			</div>
 		</div>
-		<div class="col-md-4">
-			<h3 th:inline="text">Welcome to the Music database</h3> <p>Want to make changes. <a href="/musiclist">Log in</a></p>
-		</div>
-		<div>
-			<h3>Albums:</h3>
-			<table class="table table-striped">
-				<tr>
-					<th>Name</th>
-					<th>Artist</th>
-					<th>Genre</th>
-					<th>Release Year</th>
-				</tr>
-				<tr th:each="album : ${albums}">
-					<td th:text="${album.name}"></td>
-					<td th:text="${album.artist}"></td>
-					<td th:text="${album.genre}"></td>
-					<td th:text="${album.releaseyear}"></td>
-				</tr>
-			</table>
-		</div>
-			
-		<div>
-			<h3>Songs:</h3>
-			<table class="table table-striped">
-				<tr>
-					<th>Title</th>
-					<th>Song genre</th>
-					<th>Length</th>
-					<th>Album</th>
-				</tr>
-				<tr th:each="song : ${songs}">
-					<td th:text="${song.title}"></td>
-					<td th:text="${song.genre}"></td>
-					<td th:text="${song.length}"></td>
-					<td th:text="${song.album.name}"></td>
-				</tr>
-			</table>
-		</div>
-	</div>
-</body>
+	</body>
 </html>
