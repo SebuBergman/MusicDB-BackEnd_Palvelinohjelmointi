@@ -6,16 +6,18 @@ import java.io.IOException;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.*;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.entity.ContentType;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)   
-@SpringBootTest
+@DataJpaTest
 class RestEndpointsJsonTest {
 	
 	@Test
@@ -38,7 +40,7 @@ class RestEndpointsJsonTest {
 	 
 	   // Given
 	   String jsonMimeType = "application/json";
-	   HttpUriRequest request = new HttpGet( "http://localhost:8080/songs/{id}" );
+	   HttpUriRequest request = new HttpGet( "http://localhost:8080/songs/12" );
 
 	   // When
 	   HttpResponse response = HttpClientBuilder.create().build().execute( request );
@@ -53,7 +55,7 @@ class RestEndpointsJsonTest {
 	 
 	   // Given
 	   String jsonMimeType = "application/json";
-	   HttpUriRequest request = new HttpGet( "http://localhost:8080/songs/{id}/albums" );
+	   HttpUriRequest request = new HttpGet( "http://localhost:8080/songs/12/albums" );
 
 	   // When
 	   HttpResponse response = HttpClientBuilder.create().build().execute( request );
@@ -83,7 +85,7 @@ class RestEndpointsJsonTest {
 	 
 	   // Given
 	   String jsonMimeType = "application/json";
-	   HttpUriRequest request = new HttpGet( "http://localhost:8080/albums/{id}" );
+	   HttpUriRequest request = new HttpGet( "http://localhost:8080/albums/1" );
 
 	   // When
 	   HttpResponse response = HttpClientBuilder.create().build().execute( request );
@@ -98,7 +100,7 @@ class RestEndpointsJsonTest {
 	 
 	   // Given
 	   String jsonMimeType = "application/json";
-	   HttpUriRequest request = new HttpGet( "http://localhost:8080/albums/{id}/songs" );
+	   HttpUriRequest request = new HttpGet( "http://localhost:8080/albums/1/songs" );
 
 	   // When
 	   HttpResponse response = HttpClientBuilder.create().build().execute( request );
