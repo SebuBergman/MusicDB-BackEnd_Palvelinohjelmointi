@@ -7,6 +7,29 @@
 		<link type="text/css" rel="stylesheet" href="css/style.css" th:href="@{css/style.css}" />
 	</head>
 	<body>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/index">Music DB</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+				aria-controls="navbarTogglerDemo02" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link" href="/musiclist">Musiclist</a></li>
+					<li class="nav-item"><a class="nav-link" href="/albumlist">Albumlist</a></li>
+					<li class="nav-item"><a class="nav-link active" aria-current="page" href="/listsongs">Songlist</a></li>
+				</ul>
+				<a th:inline="text" id="usernametext">Welcome
+					[[${#httpServletRequest.remoteUser}]]</a>
+				<form th:action="@{/logout}" method="post">
+					<input type="submit" value="Sign Out" class="btn btn-sm btn-danger" />
+				</form>
+			</div>
+		</div>
+	</nav>
 		<div id="h1div" class="d-flex justify-content-center">
 			<h1>Add Song</h1>
 		</div>
@@ -35,7 +58,7 @@
 				</select>
 				<div style="clear: both; display: block; height: 10px;"></div>
 					
-				<input type="submit" value="Save" class="btn btn-success"></input><a href="/musiclist"  class="btn btn-primary" id="returnbutton">Return</a>
+				<input type="submit" value="Save" class="btn btn-success"></input><a href="/musiclist"  class="btn btn-primary" id="returnbutton">Cancel</a>
 			</form>
 		</div>
 	</body>

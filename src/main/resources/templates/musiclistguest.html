@@ -7,7 +7,28 @@
 		<link type="text/css" rel="stylesheet" href="css/style.css" th:href="@{css/style.css}" />
 	</head>
 	<body>
-		<div class="container">
+	<div>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/index">Music DB</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+				aria-controls="navbarTogglerDemo02" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link" href="/musiclist">Musiclist</a></li>
+					<li class="nav-item"><a class="nav-link" href="/albumlist">Albumlist</a></li>
+					<li class="nav-item"><a class="nav-link" href="/listsongs">Songlist</a></li>
+				</ul>
+				<a href="/login" class="btn btn-sm btn-danger" id="returnbutton">Log in here!</a>
+			</div>
+		</div>
+	</nav>
+	</div>
+		<div class="container" id="topbarmargin">
 			<div class="col-md-4">
 				<h1>Music db</h1>
 			</div>

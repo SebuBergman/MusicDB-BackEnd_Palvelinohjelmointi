@@ -59,3 +59,17 @@
 .divcentering {
 	margin: auto;
 }
+
+/* For index/start page */
+.indexcenter {
+	text-align: center;
+}
+
+#topbarmargin {
+	margin-top: 20px;
+}
+
+#usernametext {
+	padding-right: 20px;
+	color: white;
+}

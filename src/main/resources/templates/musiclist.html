@@ -1,70 +1,97 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-	<head>
-		<title>Songlist</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
-		<link type="text/css" rel="stylesheet" href="css/style.css" th:href="@{css/style.css}" />
-	</head>
-	<body>
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<h1>Music database</h1>
-				</div>
-				<div class="col" id="logindiv">
-					<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
-					<form th:action="@{/logout}" method="post">
-						<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
-					</form>
-				</div>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Songlist</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
+<link type="text/css" rel="stylesheet" href="/css/style.css"
+	th:href="@{/css/style.css}" />
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/index">Music DB</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+				aria-controls="navbarTogglerDemo02" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active" aria-current="page" href="/musiclist">Musiclist</a></li>
+					<li class="nav-item"><a class="nav-link" href="/albumlist">Albumlist</a></li>
+					<li class="nav-item"><a class="nav-link" href="/listsongs">Songlist</a></li>
+				</ul>
+				<a th:inline="text" id="usernametext">Welcome
+					[[${#httpServletRequest.remoteUser}]]</a>
+				<form th:action="@{/logout}" method="post">
+					<input type="submit" value="Sign Out" class="btn btn-sm btn-danger" />
+				</form>
 			</div>
-			<div>
-				<h3>Albums:</h3>
-				<table class="table table-striped">
-					<tr>
-						<th>Name</th>
-						<th>Artist</th>
-						<th>Genre</th>
-						<th>Release Year</th>
-						<th></th>
-						<th sec:authorize="hasAuthority('ADMIN')"></th>
-					</tr>
-					<tr th:each="album : ${albums}">
-						<td th:text="${album.name}"></td>
-						<td th:text="${album.artist}"></td>
-						<td th:text="${album.genre}"></td>
-						<td th:text="${album.releaseyear}"></td>
-						<td><a th:href="@{/albumedit{id}(id=${album.albumid})}" class="btn btn-primary">Edit</a></td>
-						<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/albumdelete/{id}(id=${album.albumid})}" class="btn btn-xs btn-danger">Delete</a></td>
-					</tr>
-				</table>
+		</div>
+	</nav>
+	<div class="container" id="topbarmargin">
+		<div class="row">
+			<div class="col">
+				<h1>Music database</h1>
 			</div>
-			<div>
-				<h3>Songs:</h3>
-				<table class="table table-striped">
-					<tr>
-						<th>Title</th>
-						<th>Genre</th>
-						<th>Length</th>
-						<th>Album</th>
-						<th></th>
-						<th sec:authorize="hasAuthority('ADMIN')"></th>
-					</tr>
-					<tr th:each="song : ${songs}">
-						<td th:text="${song.title}"></td>
-						<td th:text="${song.genre}"></td>
-						<td th:text="${song.length}"></td>
-						<td th:text="${song.album.name}"></td>
-						<td><a th:href="@{/songedit{id}(id=${song.id})}" class="btn btn-primary">Edit</a></td>
-						<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/songdelete/{id}(id=${song.id})}" class="btn btn-xs btn-danger">Delete</a></td>
-					</tr>
-				</table>
-			</div>
-			<div id="addstuffdiv">
-				<a href="/addsong" class="btn btn-primary">Add Song</a>
-				<a href="/addalbum" class="btn btn-primary">Add Album</a>
-			</div>
-		</div> 
-	</body>
+		</div>
+		<div>
+			<h3>Albums:</h3>
+			<table class="table table-striped">
+				<tr>
+					<th>Name</th>
+					<th>Artist</th>
+					<th>Genre</th>
+					<th>Release Year</th>
+					<th></th>
+					<th sec:authorize="hasAuthority('ADMIN')"></th>
+				</tr>
+				<tr th:each="album : ${albums}">
+					<td th:text="${album.name}"></td>
+					<td th:text="${album.artist}"></td>
+					<td th:text="${album.genre}"></td>
+					<td th:text="${album.releaseyear}"></td>
+					<td><a th:href="@{/albumedit{id}(id=${album.albumid})}"
+						class="btn btn-primary">Edit</a></td>
+					<td sec:authorize="hasAuthority('ADMIN')"><a
+						th:href="@{/albumdelete/{id}(id=${album.albumid})}"
+						class="btn btn-xs btn-danger">Delete</a></td>
+				</tr>
+			</table>
+		</div>
+		<div>
+			<h3>Songs:</h3>
+			<table class="table table-striped">
+				<tr>
+					<th>Title</th>
+					<th>Genre</th>
+					<th>Length</th>
+					<th>Album</th>
+					<th></th>
+					<th sec:authorize="hasAuthority('ADMIN')"></th>
+				</tr>
+				<tr th:each="song : ${songs}">
+					<td th:text="${song.title}"></td>
+					<td th:text="${song.genre}"></td>
+					<td th:text="${song.length}"></td>
+					<td th:text="${song.album.name}"></td>
+					<td><a th:href="@{/songedit{id}(id=${song.id})}"
+						class="btn btn-primary">Edit</a></td>
+					<td sec:authorize="hasAuthority('ADMIN')"><a
+						th:href="@{/songdelete/{id}(id=${song.id})}"
+						class="btn btn-xs btn-danger">Delete</a></td>
+				</tr>
+			</table>
+		</div>
+		<div id="addstuffdiv">
+			<a href="/addsong" class="btn btn-primary">Add Song</a> <a
+				href="/addalbum" class="btn btn-primary">Add Album</a>
+		</div>
+	</div>
+	<script th:src="@{/css/bootstrap.min.js}"></script>
+</body>
 </html>
