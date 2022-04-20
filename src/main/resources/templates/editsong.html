@@ -1,13 +1,15 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<title>Song edit</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
-		<link type="text/css" rel="stylesheet" href="css/style.css" th:href="@{css/style.css}" />
-	</head>
-	<body>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<head>
+<title>Song edit</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+<link type="text/css" rel="stylesheet" href="css/style.css"
+	th:href="@{css/style.css}" />
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="/index">Music DB</a>
 			<button class="navbar-toggler" type="button"
@@ -20,7 +22,8 @@
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link" href="/musiclist">Musiclist</a></li>
 					<li class="nav-item"><a class="nav-link" href="/albumlist">Albumlist</a></li>
-					<li class="nav-item"><a class="nav-link active" aria-current="page" href="/listsongs">Songlist</a></li>
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="/listsongs">Songlist</a></li>
 				</ul>
 				<a th:inline="text" id="usernametext">Welcome
 					[[${#httpServletRequest.remoteUser}]]</a>
@@ -30,38 +33,45 @@
 			</div>
 		</div>
 	</nav>
-		<div>
-			<div id="h1div" class="d-flex justify-content-center">
-				<h1>Edit song</h1>
-			</div>
-			<div id="editformdiv" class="d-flex justify-content-center">
-				<form th:object="${song}" th:action="@{savesong}" action="#" method="post">
-				
-					<label for="songid"></label>
-					<input type="hidden" id="songid" th:field="*{id}" />
-					<div style="clear: both; display: block; height: 10px;"></div>
-		
-					<label for="songtitle">Song Title</label>
-					<input type="text" id="songtitle" th:field="*{title}" />
-					<div style="clear: both; display: block; height: 10px;"></div>
-		
-					<label for="songgenre">Song Genre</label>
-					<input type="text" id="songgenre" th:field="*{genre}" />
-					<div style="clear: both; display: block; height: 10px;"></div>
-		
-					<label for="songlength">Length</label>
-					<input type="text" th:field="*{length}" />
-					<div style="clear: both; display: block; height: 10px;"></div>
-					
-					<label for="albumlist">Choose album:</label>
-					<select id="albumlist" th:field="*{album}" class="form-control">
-						<option th:each="album: ${albums}" th:value="${album.albumid}" th:text="${album.name}"></option>
-					</select>
-					<div style="clear: both; display: block; height: 10px;"></div>
-					
-					<input type="submit" value="Save Song" class="btn btn-success"></input><a href="/musiclist" class="btn btn-primary" id="returnbutton">Cancel</a>
-				</form>
-			</div>
+	<div>
+		<div id="h1div" class="d-flex justify-content-center">
+			<h1>Edit song</h1>
 		</div>
-	</body>
+		<div id="editformdiv" class="d-flex justify-content-center">
+			<form th:object="${song}" th:action="@{savesong}" action="#"
+				method="post">
+
+				<label for="songid"></label> <input type="hidden"
+					class="form-control" id="exampleFormControlInput1" th:field="*{id}" />
+				<div style="clear: both; display: block; height: 10px;"></div>
+
+				<label for="songtitle">Song Title</label> <input type="text"
+					class="form-control" id="exampleFormControlInput1"
+					th:field="*{title}" />
+				<div style="clear: both; display: block; height: 10px;"></div>
+
+				<label for="songgenre">Song Genre</label> <input type="text"
+					class="form-control" id="exampleFormControlInput1"
+					th:field="*{genre}" />
+				<div style="clear: both; display: block; height: 10px;"></div>
+
+				<label for="songlength">Length</label> <input type="text"
+					th:field="*{length}" class="form-control"
+					id="exampleFormControlInput1" />
+				<div style="clear: both; display: block; height: 10px;"></div>
+
+				<label for="albumlist">Choose album:</label> <select
+					class="form-control" id="exampleFormControlInput1"
+					th:field="*{album}">
+					<option th:each="album: ${albums}" th:value="${album.albumid}"
+						th:text="${album.name}"></option>
+				</select>
+				<div style="clear: both; display: block; height: 10px;"></div>
+
+				<input type="submit" value="Save Song" class="btn btn-success"></input><a
+					href="/musiclist" class="btn btn-primary" id="returnbutton">Cancel</a>
+			</form>
+		</div>
+	</div>
+</body>
 </html>

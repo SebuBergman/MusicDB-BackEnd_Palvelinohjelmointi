@@ -16,13 +16,13 @@ import hhpalvelinohjelmointi.Musicdb.domain.UserRepository;
 public class UserRepositoryTest {
 	@Autowired
 	private UserRepository userrepository;
-	
+
 	@Test
 	public void findByUsernameShouldReturnAUser() {
 		User user = userrepository.findByUsername("user");
 		assertThat(user.getUsername()).isEqualTo("user");
 	}
-	
+
 	@Test
 	public void createNewUser() {
 		User user1 = new User("Mikko", "Mikonsalasana123", "Testaaja");

@@ -12,29 +12,29 @@ import hhpalvelinohjelmointi.Musicdb.web.AlbumController;
 import hhpalvelinohjelmointi.Musicdb.web.CombinedController;
 import hhpalvelinohjelmointi.Musicdb.web.SongController;
 
-@ExtendWith(SpringExtension.class)   
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
 class MusicdbApplicationTest {
 
 	@Autowired
 	private CombinedController combinedController;
-	
+
 	@Autowired
 	private SongController songController;
-	
+
 	@Autowired
 	private AlbumController albumController;
-	
+
 	@Test
 	public void combinedLoads() throws Exception {
 		assertThat(combinedController).isNotNull();
 	}
-	
+
 	@Test
-	public void songControllerLoads() throws Exception  {
+	public void songControllerLoads() throws Exception {
 		assertThat(songController).isNotNull();
 	}
-	
+
 	@Test
 	public void albumControllerLoads() throws Exception {
 		assertThat(albumController).isNotNull();

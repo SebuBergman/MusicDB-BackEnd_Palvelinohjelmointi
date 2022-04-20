@@ -22,16 +22,16 @@
 
 /* CSS for login page and login buttons */
 #logindiv {
-    max-width: 200px;
-    padding: 15px;
-    margin: 0 auto;
-    text-align: right;
+	max-width: 200px;
+	padding: 15px;
+	margin: 0 auto;
+	text-align: right;
 }
 
 #loginpagediv {
 	max-width: 330px;
-    padding: 15px;
-    margin: 0 auto;
+	padding: 15px;
+	margin: 0 auto;
 }
 
 #backgroundcolorlogin {
@@ -72,4 +72,8 @@
 #usernametext {
 	padding-right: 20px;
 	color: white;
+}
+
+#exampleFormControlInput1 {
+	width: 350px !important;
 }

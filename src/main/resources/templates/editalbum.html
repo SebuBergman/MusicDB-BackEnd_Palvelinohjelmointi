@@ -38,29 +38,30 @@
 				<form th:object="${album}" th:action="@{savealbum}" action="#" method="post">
 				
 					<label for="albumid"></label>
-					<input type="hidden" id="albumid" th:field="*{albumid}" />
+					<input type="hidden" class="form-control" id="exampleFormControlInput1" th:field="*{albumid}" />
 					<div style="clear: both; display: block; height: 10px;"></div>
 		
 					<label for="albumname">Album Name</label>
-					<input type="text" id="albumname" th:field="*{name}" />
+					<input type="text" class="form-control" id="exampleFormControlInput1" th:field="*{name}" />
 					<div style="clear: both; display: block; height: 10px;"></div>
 		
 					<label for="albumartist">Album Artist</label>
-					<input type="text" id="albumartist" th:field="*{artist}" />
+					<input type="text" class="form-control" id="exampleFormControlInput1" th:field="*{artist}" />
 					<div style="clear: both; display: block; height: 10px;"></div>
 		
 					<label for="albumgenre">Album genre</label>
-					<input type="text" th:field="*{genre}" />
+					<input type="text" class="form-control" id="exampleFormControlInput1" th:field="*{genre}" />
 					<div style="clear: both; display: block; height: 10px;"></div>
 		
 					<label for="releaseyear">Release Year</label>
-					<input type="text" th:field="*{releaseyear}" />
+					<input type="text" class="form-control" id="exampleFormControlInput1" th:field="*{releaseyear}" />
 					<div style="clear: both; display: block; height: 10px;"></div>
 					
 					<label for="albumartlink"></label>
 					<input type="hidden" th:field="*{albumart}" />
 					
-					<input type="submit" value="Save Album" class="btn btn-success"></input><a href="/musiclist" class="btn btn-primary" id="returnbutton">Cancel</a>
+					<input type="submit" value="Save Album" class="btn btn-success"></input>
+					<a href="/musiclist" class="btn btn-primary" id="returnbutton">Cancel</a>
 				</form>
 			</div>
 		</div>

@@ -12,20 +12,21 @@ import javax.persistence.OneToMany;
 @Entity
 public class Album {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	//All of my Album details
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	// All of my Album details
 	private Long albumid;
 	private String name;
 	private String artist;
 	private String genre;
 	private int releaseyear;
 	private String albumart;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "album")
 	private List<Song> songs;
 
-	public Album() {}
-	
+	public Album() {
+	}
+
 	public Album(String name, String artist, String genre, int releaseyear) {
 		super();
 		this.name = name;
@@ -33,7 +34,7 @@ public class Album {
 		this.genre = genre;
 		this.releaseyear = releaseyear;
 	}
-	
+
 	public Album(String name, String artist, String genre, int releaseyear, String albumart) {
 		super();
 		this.name = name;
@@ -42,7 +43,7 @@ public class Album {
 		this.releaseyear = releaseyear;
 		this.albumart = albumart;
 	}
-	
+
 	public Album(Long albumid, String name, String artist, String genre, int releaseyear, String albumart) {
 		super();
 		this.albumid = albumid;
@@ -53,7 +54,8 @@ public class Album {
 		this.albumart = albumart;
 	}
 
-	public Album(Long albumid, String name, String artist, String genre, int releaseyear, String albumart, List<Song> songs) {
+	public Album(Long albumid, String name, String artist, String genre, int releaseyear, String albumart,
+			List<Song> songs) {
 		super();
 		this.albumid = albumid;
 		this.name = name;

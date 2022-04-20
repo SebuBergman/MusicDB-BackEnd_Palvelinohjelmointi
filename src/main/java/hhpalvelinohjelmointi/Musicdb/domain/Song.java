@@ -12,28 +12,28 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 public class Song {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String title;
 	private String genre;
 	private double length;
-	
+
 	@ManyToOne
 	@JsonIgnoreProperties("songs")
 	@JoinColumn(name = "albumid")
 	private Album album;
-	
+
 	public Song() {
 		super();
 	}
-	
+
 	public Song(String title, String genre, double length) {
 		super();
 		this.title = title;
 		this.genre = genre;
 		this.length = length;
 	}
-	
+
 	public Song(String title, String genre, double length, Album album) {
 		super();
 		this.title = title;
@@ -49,7 +49,7 @@ public class Song {
 		this.genre = genre;
 		this.length = length;
 	}
-	
+
 	public Song(Long id, String title, String genre, double length, Album album) {
 		super();
 		this.id = id;
@@ -102,7 +102,8 @@ public class Song {
 	@Override
 	public String toString() {
 		if (this.album != null)
-			return "Song [id=" + id + ", title=" + title + ", genre=" + genre + ", length=" + length + " album" + this.getAlbum() + "]";
+			return "Song [id=" + id + ", title=" + title + ", genre=" + genre + ", length=" + length + " album"
+					+ this.getAlbum() + "]";
 		else
 			return "Song [id=" + id + ", title=" + title + ", genre=" + genre + ", length=" + length + "]";
 	}
